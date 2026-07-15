@@ -1,0 +1,50 @@
+{
+  "result": {
+    "agent": "main_orchestrator",
+    "status": "failed",
+    "data": {
+      "project_id": "raven_1784101621142",
+      "project_dir": "/home/user/raven/projects/raven_1784101621142"
+    },
+    "confidence": 0.0,
+    "error": "transcript_agent failed: faster-whisper is not installed. Install it before transcribing audio without captions."
+  },
+  "events": [
+    {
+      "stage": "input_normalizer",
+      "status": "partial",
+      "agent": "input_normalizer",
+      "error": null
+    },
+    {
+      "stage": "input_normalizer",
+      "status": "success",
+      "agent": "input_normalizer",
+      "error": null
+    },
+    {
+      "stage": "preprocessor",
+      "status": "partial",
+      "agent": "preprocessor",
+      "error": null
+    },
+    {
+      "stage": "preprocessor",
+      "status": "success",
+      "agent": "preprocessor",
+      "error": null
+    },
+    {
+      "stage": "transcript_agent",
+      "status": "partial",
+      "agent": "transcript_agent",
+      "error": null
+    },
+    {
+      "stage": "transcript_agent",
+      "status": "failed",
+      "agent": "transcript_agent",
+      "error": "faster-whisper is not installed. Install it before transcribing audio without captions."
+    }
+  ]
+}

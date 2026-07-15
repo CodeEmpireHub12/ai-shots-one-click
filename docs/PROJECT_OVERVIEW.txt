@@ -1,0 +1,181 @@
+=====================================================
+   PROJECT RAVEN - COMPLETE OVERVIEW
+   AI-Powered Short Video Creation Pipeline
+=====================================================
+
+📌 WHAT IS PROJECT RAVEN?
+---------------------------
+Project Raven is an automated AI pipeline that takes a long video (or YouTube URL) 
+and intelligently creates short, engaging clip videos (like YouTube Shorts / Reels) 
+from the best moments in the original video.
+
+It uses multiple AI agents working together step-by-step to:
+  1. Understand the video content
+  2. Find the most interesting/important parts
+  3. Add captions, metadata, and quality checks
+  4. Export polished short clips ready for upload
+
+
+=====================================================
+🔧 HOW THE PIPELINE WORKS (Step by Step)
+=====================================================
+
+The pipeline is divided into 9 stages, each handled by a dedicated "agent":
+
+─── STAGE 1: INPUT NORMALIZER ───
+  Agent:  app/input_normalizer.py
+  What it does:
+    - Accepts a YouTube URL OR a local video file path
+    - If YouTube URL: downloads the video using yt-dlp
+    - If local file: validates the format (mp4, mov, mkv)
+    - Creates a project folder with a unique project_id
+    - Saves normalized_input.json with video metadata
+
+─── STAGE 2: PREPROCESSOR ───
+  Agent:  app/preprocessor.py
+  What it does:
+    - Extracts audio from the video as a WAV file (16kHz mono)
+    - Gets video info: resolution, FPS, duration
+    - Saves: source.mp4, audio.wav
+
+─── STAGE 3: TRANSCRIPT AGENT ───
+  Agent:  transcriber/transcript_agent.py
+  What it does:
+    - If YouTube captions exist -> uses them directly
+    - If no captions -> uses faster-whisper (AI speech-to-text)
+    - Creates a transcript with timestamped segments
+    - Saves: transcript.json, transcript.srt
+
+─── STAGE 4: SCENE + SPEECH ANALYSIS ───
+  Agent:  analyzer/scene_agent.py, analyzer/speech_agent.py
+  What it does:
+    - Scene Agent: Detects scene changes in the video
+    - Speech Agent: Analyzes speech patterns (pauses, energy, pace)
+    - Helps identify "interesting" moments later
+
+─── STAGE 5: KEYWORD + CLIP FINDER ───
+  Agent:  analyzer/keyword_agent.py, analyzer/clip_finder_agent.py
+  What it does:
+    - Keyword Agent: Extracts keywords, hooks, and questions from transcript
+    - Clip Finder: Matches interesting keywords with corresponding video scenes
+    - Finds candidate clips worth turning into shorts
+
+─── STAGE 6: DIRECTOR AGENT ───
+  Agent:  director/director_agent.py
+  What it does:
+    - Acts like a human video editor
+    - Selects the BEST clips from the candidates
+    - Decides start/end times for each short
+    - Saves: director_selected_clips.json
+
+─── STAGE 7: CAPTION + METADATA ───
+  Agent:  caption/caption_agent.py, metadata/metadata_agent.py
+  What it does:
+    - Caption Agent: Generates styled .ASS subtitles for the clip
+    - Metadata Agent: Creates title, description, tags, filename
+    - Saves: caption_output.json, metadata_output.json
+
+─── STAGE 8: TIMELINE + EXPORT ───
+  Agent:  exporter/timeline_agent.py, exporter/export_agent.py
+  What it does:
+    - Timeline Agent: Builds an ffmpeg command to render the clip with captions
+    - Export Agent: Executes ffmpeg to render the final .mp4 video
+    - Saves: timeline_output.json, export_output.json, final.mp4
+
+─── STAGE 9: QUALITY CHECK ───
+  Agent:  quality/quality_agent.py
+  What it does:
+    - Verifies the rendered clip plays correctly
+    - Checks duration matches expected length
+    - Saves: quality_output.json
+
+
+=====================================================
+📁 WHERE ARE THE OUTPUT FILES STORED?
+=====================================================
+
+All project data is stored under:
+  raven/projects/
+  └── raven_{project_id}/
+        ├── source.mp4                  # Original downloaded/copied video
+        ├── audio.wav                   # Extracted audio
+        ├── normalized_input.json       # Stage 1 output
+        ├── normalizer_output.json      # Stage 1 output
+        ├── preprocessor_output.json    # Stage 2 output
+        ├── transcript.json             # Stage 3 output
+        ├── scene_output.json           # Stage 4 output
+        ├── speech_output.json          # Stage 4 output
+        ├── keyword_output.json         # Stage 5 output
+        ├── clip_candidates.json        # Stage 5 output
+        ├── director_selected_clips.json# Stage 6 output
+        ├── project_state.json          # Pipeline progress tracker
+        │
+        ├── clips/
+        │   └── clip_1/
+        │       ├── caption_output.json # Stage 7 captions
+        │       ├── metadata_output.json# Stage 7 metadata
+        │       ├── timeline_output.json# Stage 8 timeline
+        │       ├── export_output.json  # Stage 8 export log
+        │       ├── quality_output.json # Stage 9 quality check
+        │       └── final.mp4           🎬 THE FINAL SHORT VIDEO!
+        │
+        └── deliverables/
+            └── 01_{title}.mp4          # Final deliverable copy
+
+
+=====================================================
+🎬 HOW A SHORT VIDEO IS CREATED (Summary)
+=====================================================
+
+1. You provide a video URL or file
+2. Raven downloads it and extracts the audio
+3. AI transcribes everything that's spoken with timestamps
+4. It analyzes scenes and speech patterns to find interesting parts
+5. It finds keywords, hooks, and questions in the transcript
+6. The Director AI picks the best clips (e.g., the funniest/most important moment)
+7. Captions are generated and styled onto the clip
+8. The clip is rendered as a standalone .mp4 file
+9. Quality is verified
+10. The final short is placed in:
+       raven/projects/raven_{id}/clips/clip_{n}/final.mp4
+    AND copied to:
+       raven/projects/raven_{id}/deliverables/{number}_{title}.mp4
+
+
+=====================================================
+🚀 HOW TO RUN THE PROJECT
+=====================================================
+
+# From the parent directory (NOT inside raven/ folder):
+cd d:\ThinkNext Practice\2026-latest-project\Project Raven
+
+# For a YouTube video:
+python -m raven.app.main --youtube-url "https://youtube.com/watch?v=..."
+
+# For a local video file:
+python -m raven.app.main --file-path "path/to/video.mp4"
+
+# For testing via Streamlit UI:
+cd raven
+streamlit run ui/streamlit_app.py
+
+
+=====================================================
+⚠️ KNOWN ISSUES / REQUIREMENTS
+=====================================================
+
+- faster-whisper requires significant RAM (for transcription without captions)
+- ffmpeg must be installed on the system
+- 4K/very long videos may cause memory errors
+- yt-dlp requires internet for YouTube downloads
+
+
+=====================================================
+📊 LOGS & DEBUGGING
+=====================================================
+
+All logs are stored in:
+  raven/logs/  →  {agent_name}.log
+  raven/projects/raven_{id}/logs/  →  summary.log
+
+Each agent's log shows detailed processing steps and errors.

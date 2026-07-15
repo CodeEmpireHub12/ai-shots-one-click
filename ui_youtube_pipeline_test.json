@@ -1,0 +1,214 @@
+{
+  "result": {
+    "agent": "main_orchestrator",
+    "status": "success",
+    "data": {
+      "project_id": "raven_1784101578479",
+      "project_dir": "/home/user/raven/projects/raven_1784101578479",
+      "final_outputs": [
+        {
+          "clip_index": 1,
+          "video_path": "/home/user/raven/projects/raven_1784101578479/clips/clip_1/final.mp4",
+          "metadata": {
+            "title": "All right so here we are in front",
+            "description": "A quick highlight from Me at the zoo.",
+            "hashtags": [
+              "#zoo",
+              "#right",
+              "#front",
+              "#elephants",
+              "#cool",
+              "#thing",
+              "#about",
+              "#these"
+            ],
+            "filename": "all_right_so_here_we_are_in_front"
+          },
+          "captions_path": "/home/user/raven/projects/raven_1784101578479/clips/clip_1/captions.ass",
+          "quality": {
+            "black_frames": "pass",
+            "duration_check": "pass",
+            "audio_check": "pass",
+            "overall": "pass",
+            "details": {
+              "actual_duration": 18.934,
+              "expected_duration": 18.933333333333334,
+              "black_frame_details": {
+                "status": "pass",
+                "sampled_frames": 8,
+                "black_ratio": 0.0
+              },
+              "audio_details": {
+                "status": "pass",
+                "energy": 0.05054609850049019
+              }
+            }
+          },
+          "deliverable_path": "/home/user/raven/projects/raven_1784101578479/deliverables/01_all_right_so_here_we_are_in_front.mp4"
+        }
+      ],
+      "summary_log_path": "/home/user/raven/projects/raven_1784101578479/logs/summary.log",
+      "project_state_path": "/home/user/raven/projects/raven_1784101578479/project_state.json"
+    },
+    "confidence": 1.0,
+    "error": null
+  },
+  "events": [
+    {
+      "stage": "input_normalizer",
+      "status": "partial",
+      "agent": "input_normalizer",
+      "error": null
+    },
+    {
+      "stage": "input_normalizer",
+      "status": "success",
+      "agent": "input_normalizer",
+      "error": null
+    },
+    {
+      "stage": "preprocessor",
+      "status": "partial",
+      "agent": "preprocessor",
+      "error": null
+    },
+    {
+      "stage": "preprocessor",
+      "status": "success",
+      "agent": "preprocessor",
+      "error": null
+    },
+    {
+      "stage": "transcript_agent",
+      "status": "partial",
+      "agent": "transcript_agent",
+      "error": null
+    },
+    {
+      "stage": "transcript_agent",
+      "status": "success",
+      "agent": "transcript_agent",
+      "error": null
+    },
+    {
+      "stage": "scene_agent",
+      "status": "partial",
+      "agent": "scene_agent",
+      "error": null
+    },
+    {
+      "stage": "scene_agent",
+      "status": "success",
+      "agent": "scene_agent",
+      "error": null
+    },
+    {
+      "stage": "speech_agent",
+      "status": "partial",
+      "agent": "speech_agent",
+      "error": null
+    },
+    {
+      "stage": "speech_agent",
+      "status": "success",
+      "agent": "speech_agent",
+      "error": null
+    },
+    {
+      "stage": "keyword_agent",
+      "status": "partial",
+      "agent": "keyword_agent",
+      "error": null
+    },
+    {
+      "stage": "keyword_agent",
+      "status": "success",
+      "agent": "keyword_agent",
+      "error": null
+    },
+    {
+      "stage": "clip_finder_agent",
+      "status": "partial",
+      "agent": "clip_finder_agent",
+      "error": null
+    },
+    {
+      "stage": "clip_finder_agent",
+      "status": "success",
+      "agent": "clip_finder_agent",
+      "error": null
+    },
+    {
+      "stage": "director_agent",
+      "status": "partial",
+      "agent": "director_agent",
+      "error": null
+    },
+    {
+      "stage": "director_agent",
+      "status": "partial",
+      "agent": "director_agent",
+      "error": "LLM selection failed; used rule-based fallback. Last error: <urlopen error [Errno 111] Connection refused>"
+    },
+    {
+      "stage": "caption_agent",
+      "status": "partial",
+      "agent": "caption_agent",
+      "error": null
+    },
+    {
+      "stage": "caption_agent",
+      "status": "success",
+      "agent": "caption_agent",
+      "error": null
+    },
+    {
+      "stage": "metadata_agent",
+      "status": "partial",
+      "agent": "metadata_agent",
+      "error": null
+    },
+    {
+      "stage": "metadata_agent",
+      "status": "partial",
+      "agent": "metadata_agent",
+      "error": "LLM metadata generation failed; used fallback. Last error: <urlopen error [Errno 111] Connection refused>"
+    },
+    {
+      "stage": "timeline_agent",
+      "status": "partial",
+      "agent": "timeline_agent",
+      "error": null
+    },
+    {
+      "stage": "timeline_agent",
+      "status": "success",
+      "agent": "timeline_agent",
+      "error": null
+    },
+    {
+      "stage": "export_agent",
+      "status": "partial",
+      "agent": "export_agent",
+      "error": null
+    },
+    {
+      "stage": "export_agent",
+      "status": "success",
+      "agent": "export_agent",
+      "error": null
+    },
+    {
+      "stage": "quality_agent",
+      "status": "partial",
+      "agent": "quality_agent",
+      "error": null
+    },
+    {
+      "stage": "quality_agent",
+      "status": "success",
+      "agent": "quality_agent",
+      "error": null
+    }
+  ]
+}

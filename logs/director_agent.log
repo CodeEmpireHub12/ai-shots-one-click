@@ -1,0 +1,20 @@
+2026-07-15 07:18:49,199 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:18:49,210 | WARNING | director_agent | Director LLM attempt 1 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:18:49,210 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:18:49,211 | WARNING | director_agent | Director LLM attempt 2 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:18:49,211 | INFO | director_agent | Using rule-based Director fallback: {'selected_clips': [{'start': 0.0, 'end': 18.933333333333334, 'score': 100, 'reason': 'High combined engagement score', 'rank': 1}]}
+2026-07-15 07:40:45,936 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:40:45,947 | WARNING | director_agent | Director LLM attempt 1 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:40:45,947 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:40:45,948 | WARNING | director_agent | Director LLM attempt 2 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:40:45,948 | INFO | director_agent | Using rule-based Director fallback: {'selected_clips': [{'start': 0.0, 'end': 18.933333333333334, 'score': 100, 'reason': 'High combined engagement score', 'rank': 1}]}
+2026-07-15 07:46:23,374 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:46:23,384 | WARNING | director_agent | Director LLM attempt 1 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:46:23,384 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 07:46:23,384 | WARNING | director_agent | Director LLM attempt 2 failed: <urlopen error [Errno 111] Connection refused>
+2026-07-15 07:46:23,384 | INFO | director_agent | Using rule-based Director fallback: {'selected_clips': [{'start': 0.0, 'end': 18.933333333333334, 'score': 100, 'reason': 'High combined engagement score', 'rank': 1}]}
+2026-07-15 23:55:15,137 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 23:55:18,681 | WARNING | director_agent | Director LLM attempt 1 failed: HTTP Error 500: Internal Server Error
+2026-07-15 23:55:18,682 | INFO | director_agent | Calling Ollama model=qwen3:4b host=http://localhost:11434
+2026-07-15 23:55:21,708 | WARNING | director_agent | Director LLM attempt 2 failed: HTTP Error 500: Internal Server Error
+2026-07-15 23:55:21,708 | INFO | director_agent | Using rule-based Director fallback: {'selected_clips': [{'start': 155.0, 'end': 215.0, 'score': 100, 'reason': 'High combined engagement score', 'rank': 1}, {'start': 150.0, 'end': 210.0, 'score': 100, 'reason': 'High combined engagement score', 'rank': 2}, {'start': 145.0, 'end': 205.0, 'score': 100, 'reason': 'High combined engagement score', 'rank': 3}, {'start': 160.0, 'end': 220.0, 'score': 100, 'reason': 'High combined engagement score', 'rank': 4}, {'start': 140.0, 'end': 200.0, 'score': 69, 'reason': 'High combined engagement score', 'rank': 5}]}

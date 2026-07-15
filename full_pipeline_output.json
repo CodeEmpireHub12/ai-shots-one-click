@@ -1,0 +1,54 @@
+{
+  "agent": "main_orchestrator",
+  "status": "success",
+  "data": {
+    "project_id": "raven_1784101241292",
+    "project_dir": "/home/user/raven/projects/raven_1784101241292",
+    "final_outputs": [
+      {
+        "clip_index": 1,
+        "video_path": "/home/user/raven/projects/raven_1784101241292/clips/clip_1/final.mp4",
+        "metadata": {
+          "title": "All right so here we are in front",
+          "description": "A quick highlight from Me at the zoo.",
+          "hashtags": [
+            "#zoo",
+            "#right",
+            "#front",
+            "#elephants",
+            "#cool",
+            "#thing",
+            "#about",
+            "#these"
+          ],
+          "filename": "all_right_so_here_we_are_in_front"
+        },
+        "captions_path": "/home/user/raven/projects/raven_1784101241292/clips/clip_1/captions.ass",
+        "quality": {
+          "black_frames": "pass",
+          "duration_check": "pass",
+          "audio_check": "pass",
+          "overall": "pass",
+          "details": {
+            "actual_duration": 18.934,
+            "expected_duration": 18.933333333333334,
+            "black_frame_details": {
+              "status": "pass",
+              "sampled_frames": 8,
+              "black_ratio": 0.0
+            },
+            "audio_details": {
+              "status": "pass",
+              "energy": 0.05054609850049019
+            }
+          }
+        },
+        "deliverable_path": "/home/user/raven/projects/raven_1784101241292/deliverables/01_all_right_so_here_we_are_in_front.mp4"
+      }
+    ],
+    "summary_log_path": "/home/user/raven/projects/raven_1784101241292/logs/summary.log",
+    "project_state_path": "/home/user/raven/projects/raven_1784101241292/project_state.json"
+  },
+  "confidence": 1.0,
+  "error": null
+}
