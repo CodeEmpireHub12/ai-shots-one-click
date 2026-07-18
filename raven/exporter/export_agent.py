@@ -111,6 +111,7 @@ def export_video(input_data: Dict[str, Any]) -> Dict[str, Any]:
         completed = subprocess.run(
             ffmpeg_command,
             shell=True,
+            executable="/bin/bash",
             capture_output=True,
             text=True,
             encoding="utf-8",
