@@ -76,9 +76,10 @@ def _validate_clip(clip: Any) -> Dict[str, Any]:
 def _escape_subtitles_filter_path(path: Path) -> str:
     """Escape a path for FFmpeg subtitles filter syntax."""
     text = str(path)
-    # Convert Windows backslashes to forward slashes and escape colons after drive letter
+    # Convert Windows backslashes to forward slashes
     text = text.replace("\\", "/")
-    text = text.replace(":/", "\\:/")
+    # Escape colons (needed for Windows drive letters like C:/)
+    text = text.replace(":", "\\:")
     text = text.replace("'", "\\'")
     return text
 
