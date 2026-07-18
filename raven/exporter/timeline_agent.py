@@ -137,43 +137,28 @@ def build_timeline(input_data: Dict[str, Any]) -> Dict[str, Any]:
         target_aspect = output_width / output_height
         escaped_ass_path = _escape_subtitles_filter_path(ass_path)
         video_filter = (
-            f"scale='if(gt(a,{target_aspect}),-2,{output_width})':"
-            f"'if(gt(a,{target_aspect}),{output_height},-2)',"
+            f"scale=if(gt(a,{target_aspect}),-2,{output_width}):"
+            f"if(gt(a,{target_aspect}),{output_height},-2),"
             f"crop={output_width}:{output_height}:(iw-{output_width})/2:(ih-{output_height})/2,"
             f"subtitles='{escaped_ass_path}'"
         )
 
         duration = clip["end"] - clip["start"]
-        def _q(s: str) -> str:
-            """Windows-safe quoting: double-quote if path has spaces."""
-            return f'"{s}"' if " " in str(s) else str(s)
 
-        command_parts = [
-            _q(ffmpeg_path),
-            "-y",
-            "-ss",
-            str(clip["start"]),
-            "-t",
-            str(duration),
-            "-i",
-            _q(str(clip["video_path"])),
-            "-vf",
-            video_filter,
-            "-c:v",
-            _q(video_codec),
-            "-preset",
-            _q(preset),
-            "-crf",
-            str(crf),
-            "-c:a",
-            _q(audio_codec),
-            "-b:a",
-            _q(audio_bitrate),
-            "-movflags",
-            "+faststart",
-            _q(str(output_path)),
-        ]
-        ffmpeg_command = " ".join(command_parts)
+        ffmpeg_command = (
+            f"{ffmpeg_path} -y"
+            f" -ss {clip['start']}"
+            f" -t {duration}"
+            f" -i {clip['video_path']}"
+            f" -vf {video_filter}"
+            f" -c:v {video_codec}"
+            f" -preset {preset}"
+            f" -crf {crf}"
+            f" -c:a {audio_codec}"
+            f" -b:a {audio_bitrate}"
+            f" -movflags +faststart"
+            f" {output_path}"
+        )
 
         data = {
             "ffmpeg_command": ffmpeg_command,
